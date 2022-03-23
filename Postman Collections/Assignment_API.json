@@ -1,0 +1,545 @@
+{
+  "info": {
+    "_postman_id": "b66eb926-7bff-48f7-8f5f-45318a6499ac",
+    "name": "Assignment_API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Weather Newyork  Temp(Positive)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "23fe679e-f56c-451e-b3be-68b7a93c438e",
+            "exec": [
+              "var region= \"New York\";\r",
+              "var weather_code = 116\r",
+              "var jsonData = pm.response.json();\r",
+              "\r",
+              "\r",
+              "var schema = {\r",
+              "  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+              "  \"type\": \"object\",\r",
+              "  \"properties\": {\r",
+              "    \"request\": {\r",
+              "      \"type\": \"object\",\r",
+              "      \"properties\": {\r",
+              "        \"type\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"query\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"language\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"unit\": {\r",
+              "          \"type\": \"string\"\r",
+              "        }\r",
+              "      },\r",
+              "      \"required\": [\r",
+              "        \"type\",\r",
+              "        \"query\",\r",
+              "        \"language\",\r",
+              "        \"unit\"\r",
+              "      ]\r",
+              "    },\r",
+              "    \"location\": {\r",
+              "      \"type\": \"object\",\r",
+              "      \"properties\": {\r",
+              "        \"name\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"country\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"region\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"lat\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"lon\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"timezone_id\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"localtime\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"localtime_epoch\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"utc_offset\": {\r",
+              "          \"type\": \"string\"\r",
+              "        }\r",
+              "      },\r",
+              "      \"required\": [\r",
+              "        \"name\",\r",
+              "        \"country\",\r",
+              "        \"region\",\r",
+              "        \"lat\",\r",
+              "        \"lon\",\r",
+              "        \"timezone_id\",\r",
+              "        \"localtime\",\r",
+              "        \"localtime_epoch\",\r",
+              "        \"utc_offset\"\r",
+              "      ]\r",
+              "    },\r",
+              "    \"current\": {\r",
+              "      \"type\": \"object\",\r",
+              "      \"properties\": {\r",
+              "        \"observation_time\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"temperature\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"weather_code\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"weather_icons\": {\r",
+              "          \"type\": \"array\",\r",
+              "          \"items\": [\r",
+              "            {\r",
+              "              \"type\": \"string\"\r",
+              "            }\r",
+              "          ]\r",
+              "        },\r",
+              "        \"weather_descriptions\": {\r",
+              "          \"type\": \"array\",\r",
+              "          \"items\": [\r",
+              "            {\r",
+              "              \"type\": \"string\"\r",
+              "            }\r",
+              "          ]\r",
+              "        },\r",
+              "        \"wind_speed\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"wind_degree\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"wind_dir\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"pressure\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"precip\": {\r",
+              "          \"type\": \"number\"\r",
+              "        },\r",
+              "        \"humidity\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"cloudcover\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"feelslike\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"uv_index\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"visibility\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"is_day\": {\r",
+              "          \"type\": \"string\"\r",
+              "        }\r",
+              "      },\r",
+              "      \"required\": [\r",
+              "        \"observation_time\",\r",
+              "        \"temperature\",\r",
+              "        \"weather_code\",\r",
+              "        \"weather_icons\",\r",
+              "        \"weather_descriptions\",\r",
+              "        \"wind_speed\",\r",
+              "        \"wind_degree\",\r",
+              "        \"wind_dir\",\r",
+              "        \"pressure\",\r",
+              "        \"precip\",\r",
+              "        \"humidity\",\r",
+              "        \"cloudcover\",\r",
+              "        \"feelslike\",\r",
+              "        \"uv_index\",\r",
+              "        \"visibility\",\r",
+              "        \"is_day\"\r",
+              "      ]\r",
+              "    }\r",
+              "  },\r",
+              "  \"required\": [\r",
+              "    \"request\",\r",
+              "    \"location\",\r",
+              "    \"current\"\r",
+              "  ]\r",
+              "}\r",
+              "tests[\"Response body vaidated against schema\"]= tv4.validate(jsonData, schema);\r",
+              "\r",
+              "if(jsonData.location.name == \"New York\")\r",
+              "{\r",
+              "    \r",
+              "     pm.test(\"Response status code is 200\", function () { pm.response.to.have.status(200); });\r",
+              "      \r",
+              "     pm.test(\"Newyork temperature is found\", function () { pm.expect(jsonData.location.region).to.eql(region); });\r",
+              "    \r",
+              "     pm.test(\"NewYork temperature based on its weather_code\", function () {\r",
+              "     pm.expect(jsonData.current.weather_code).to.eql(weather_code);\r",
+              "     console.log(region)})\r",
+              " \r",
+              " pm.test(\"Response time is less than 30000ms\", function () { pm.expect(pm.response.responseTime).to.be.below(30000); });\r",
+              "  \r",
+              "}\r",
+              "else{\r",
+              "   pm.test(\"There is error in request body\", function () {\r",
+              "   pm.expect(jsonData.length).to.eql(null);}) \r",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "da9a0aaa-74b0-4d3f-aafc-f3de3bd448cb",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": {
+            "value": "a2fb955331c8a7a381e6b1cafa015268",
+            "key": "access_key",
+            "in": "query"
+          }
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "email",
+            "value": "mohammadshoaib0@gmail.com",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://api.weatherstack.com/current?query=New York",
+          "protocol": "http",
+          "host": [
+            "api",
+            "weatherstack",
+            "com"
+          ],
+          "path": [
+            "current"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "New York"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Weather Historical Dates",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "23fe679e-f56c-451e-b3be-68b7a93c438e",
+            "exec": [
+              "var error_code = 400;\r",
+              "var jsonData = pm.response.json();\r",
+              "var weather_code = 166\r",
+              "\r",
+              "var schema = {\r",
+              "  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+              "  \"type\": \"object\",\r",
+              "  \"properties\": {\r",
+              "    \"success\": {\r",
+              "      \"type\": \"boolean\"\r",
+              "    },\r",
+              "    \"error\": {\r",
+              "      \"type\": \"object\",\r",
+              "      \"properties\": {\r",
+              "        \"code\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"type\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"info\": {\r",
+              "          \"type\": \"string\"\r",
+              "        }\r",
+              "      },\r",
+              "      \"required\": [\r",
+              "        \"code\",\r",
+              "        \"type\",\r",
+              "        \"info\"\r",
+              "      ]\r",
+              "    }\r",
+              "  },\r",
+              "  \"required\": [\r",
+              "    \"success\",\r",
+              "    \"error\"\r",
+              "  ]\r",
+              "}\r",
+              "tests[\"Response body vaidated against schema\"]= tv4.validate(jsonData, schema);\r",
+              "\r",
+              "if(jsonData.code == 200)\r",
+              "{\r",
+              "    \r",
+              "     pm.test(\"Response status code is 200\", function () { pm.response.to.have.status(200); });\r",
+              "     pm.test(\"NewYork temperature based on its weather_code\", function () {\r",
+              "     pm.expect(jsonData.current.weather_code).to.eql(weather_code);\r",
+              "     console.log(region)})      \r",
+              "    \r",
+              " \r",
+              "\r",
+              "  \r",
+              "}\r",
+              "else{\r",
+              "\r",
+              "    pm.test(\"Response time is less than 30000ms\", function () { pm.expect(pm.response.responseTime).to.be.below(30000); });\r",
+              "   pm.test(\"There is error in request body and should throw bad request error 400\", function () {\r",
+              "   pm.expect(jsonData.error.code).to.equals(error_code);}) \r",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "0028fa56-7d30-44b8-a69d-f03308046c29",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": {
+            "value": "a2fb955331c8a7a381e6b1cafa015268",
+            "key": "access_key",
+            "in": "query"
+          }
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "email",
+            "value": "mohammadshoaib0@gmail.com",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://api.weatherstack.com/historical?query= New York&historical_date= 2015-01-21&hourly= 1",
+          "protocol": "http",
+          "host": [
+            "api",
+            "weatherstack",
+            "com"
+          ],
+          "path": [
+            "historical"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": " New York"
+            },
+            {
+              "key": "historical_date",
+              "value": " 2015-01-21"
+            },
+            {
+              "key": "hourly",
+              "value": " 1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Weather Dubai  Negative",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "23fe679e-f56c-451e-b3be-68b7a93c438e",
+            "exec": [
+              "var error_code = 400;\r",
+              "var jsonData = pm.response.json();\r",
+              "var weather_code = 166\r",
+              "\r",
+              "var schema = {\r",
+              "  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+              "  \"type\": \"object\",\r",
+              "  \"properties\": {\r",
+              "    \"success\": {\r",
+              "      \"type\": \"boolean\"\r",
+              "    },\r",
+              "    \"error\": {\r",
+              "      \"type\": \"object\",\r",
+              "      \"properties\": {\r",
+              "        \"code\": {\r",
+              "          \"type\": \"integer\"\r",
+              "        },\r",
+              "        \"type\": {\r",
+              "          \"type\": \"string\"\r",
+              "        },\r",
+              "        \"info\": {\r",
+              "          \"type\": \"string\"\r",
+              "        }\r",
+              "      },\r",
+              "      \"required\": [\r",
+              "        \"code\",\r",
+              "        \"type\",\r",
+              "        \"info\"\r",
+              "      ]\r",
+              "    }\r",
+              "  },\r",
+              "  \"required\": [\r",
+              "    \"success\",\r",
+              "    \"error\"\r",
+              "  ]\r",
+              "}\r",
+              "tests[\"Response body vaidated against schema\"]= tv4.validate(jsonData, schema);\r",
+              "\r",
+              "if(jsonData.code == 200)\r",
+              "{\r",
+              "    \r",
+              "     pm.test(\"Response status code is 200\", function () { pm.response.to.have.status(200); });\r",
+              "     pm.test(\"NewYork temperature based on its weather_code\", function () {\r",
+              "     pm.expect(jsonData.current.weather_code).to.eql(weather_code);\r",
+              "     console.log(region)})      \r",
+              "    \r",
+              " \r",
+              "\r",
+              "  \r",
+              "}\r",
+              "else{\r",
+              "\r",
+              "    pm.test(\"Response time is less than 30000ms\", function () { pm.expect(pm.response.responseTime).to.be.below(30000); });\r",
+              "   pm.test(\"There is error in request body and should throw bad request error 400\", function () {\r",
+              "   pm.expect(jsonData.error.code).to.equals(error_code);}) \r",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "f0282d10-e3db-4a44-a6cf-f82e4b93e88e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": {
+            "value": "a2fb955331c8a7a381e6b1cafa015268",
+            "key": "access_key",
+            "in": "query"
+          }
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "email",
+            "value": "mohammadshoaib0@gmail.com",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://api.weatherstack.com/current?query=xyz",
+          "protocol": "http",
+          "host": [
+            "api",
+            "weatherstack",
+            "com"
+          ],
+          "path": [
+            "current"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "xyz"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {}
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "b6f939c8-8b50-41ee-a909-f0bff9d12807",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "c8323d86-baf9-4f11-ac47-b6a14b4beb85",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
